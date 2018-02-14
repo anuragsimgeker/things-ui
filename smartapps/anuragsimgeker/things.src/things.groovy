@@ -12,8 +12,9 @@ definition(
     category: "My Apps",
     iconUrl: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience.png",
     iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png",
-    iconX3Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png") {
-    
+    iconX3Url: "https://s3.amazonaws.com/smartapp-icons/Convenience/Cat-Convenience@2x.png",
+    oauth: true) {
+
     // Application setting for the external web service endpoint.
     appSetting "apiServerUrl"
 }
@@ -105,13 +106,13 @@ def getThings() {
     locks.each {thing ->
         things.add([type: 'lock', id: thing.id, label: thing.label, status: thing.getStatus(), values: [ lock: thing.latestValue('lock') ] ])
     }
-    
+
     // Smart Home Monitor
     def alarmSystemStatus = location.currentState("alarmSystemStatus")
     if (alarmSystemStatus.value != 'unconfigured') {
         things.add([ type: 'alarmSystemStatus', values: [ alarmSystemStatus: alarmSystemStatus.value ] ])
     }
-    
+
     // Sort A-Z by Device label
     things = things.sort { it.label }
 
@@ -130,15 +131,15 @@ def updateSwitch() {
     def command = request.JSON?.command
     def level = request.JSON?.level
     def device = switches.findAll { it.id == switchId }[0]
-    
+
     if (!device) {
         httpError(400, "Switch with ID $switchId not found")
     }
-    
+
     if (!device.hasCommand(command)) {
         httpError(400, "Switch with ID $switchId does not have command $command")
     }
-    
+
     switch(command) {
         case "setLevel":
             device.setLevel(level)
@@ -165,15 +166,15 @@ def updateLock() {
     def lockId = params.id
     def command = request.JSON?.command
     def device = locks.findAll { it.id == lockId }[0]
-    
+
     if (!device) {
         httpError(400, "Lock with ID $lockId not found")
     }
-    
+
     if (!device.hasCommand(command)) {
         httpError(400, "Lock with ID $lockId does not have command $command")
     }
-    
+
     switch(command) {
         case "lock":
             device.lock()
@@ -196,7 +197,7 @@ def updateLock() {
 def updateAlarmSystemStatus() {
     def lockId = params.id
     def command = request.JSON?.command
-    
+
     switch(command) {
         case "away":
             sendLocationEvent(name: "alarmSystemStatus", value: "away")
@@ -230,7 +231,7 @@ def eventHandler(evt) {
             isStateChange: evt.isStateChange()
         ]
     ]
-    
+
     try {
         httpPostJson(params)
     } catch (e) {
