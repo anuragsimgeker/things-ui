@@ -1,0 +1,19 @@
+<div class="wrapper" [ngClass]="thing.values.alarmSystemStatus">
+  <h3 class="title">Smart Home Monitor</h3>
+
+  <button (click)="setAlarm('away')" mat-fab [color]="(thing.values.alarmSystemStatus === 'away') ? 'accent' : 'primary'">
+    <mat-icon>lock</mat-icon>
+  </button>
+  <button (click)="setAlarm('stay')" mat-fab [color]="(thing.values.alarmSystemStatus === 'stay') ? 'accent' : 'primary'">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button (click)="setAlarm('off')" mat-fab [color]="(thing.values.alarmSystemStatus === 'off') ? 'accent' : 'primary'">
+    <mat-icon>lock_open</mat-icon>
+  </button>
+
+  <div [ngSwitch]="thing?.values.alarmSystemStatus" class="sub-title mat-caption">
+    <div *ngSwitchCase="'away'">Armed (Away)</div>
+    <div *ngSwitchCase="'stay'">Armed (Home)</div>
+    <div *ngSwitchCase="'off'">Disarmed</div>
+  </div>
+</div>

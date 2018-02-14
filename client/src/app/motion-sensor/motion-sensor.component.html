@@ -1,0 +1,6 @@
+<div class="wrapper" [ngClass]="[thing.values.motion,thing.status]">
+  <h3 class="title">{{ thing.label }}</h3>
+  <mat-icon>directions_run</mat-icon>
+  <div *ngIf="thing.status === 'ONLINE'" class="sub-title mat-caption">{{ thing.values.motion }}</div>
+  <div *ngIf="thing.status === 'OFFLINE'" class="sub-title mat-caption">{{ thing.status }}</div>
+</div>

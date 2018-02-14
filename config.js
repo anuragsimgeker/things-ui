@@ -1,0 +1,7 @@
+var config = {};
+
+config.SMARTTHINGS_CLIENT_ID = process.env.SMARTTHINGS_CLIENT_ID;
+config.SMARTTHINGS_CLIENT_SECRET = process.env.SMARTTHINGS_CLIENT_SECRET;
+config.SMARTTHINGS_CALLBACK_URL = process.env.SMARTTHINGS_CALLBACK_URL
+
+module.exports = config;

@@ -1,0 +1,27 @@
+<mat-toolbar color="accent" class="toolbar">
+
+  <h1 class="app-name" routerLink="/dashboard" routerLinkActive="show">Dashboard</h1>
+  <h1 class="app-name" routerLink="/help" routerLinkActive="show">Help</h1>
+
+  <span class="fill-remaining-space"></span>
+  <a matTooltip="Dashboard" mat-icon-button [routerLink]="['/dashboard']">
+    <mat-icon>dashboard</mat-icon>
+  </a>
+  <a matTooltip="Help" mat-icon-button [routerLink]="['/help']">
+    <mat-icon>help</mat-icon>
+  </a>
+  <mat-divider [vertical]="true"></mat-divider>
+  <button matTooltip="Toggle Fullscreen" mat-icon-button (click)="requestFullscreen()">
+    <mat-icon>aspect_ratio</mat-icon>
+  </button>
+  <button matTooltip="Refresh" mat-icon-button (click)="refreshScreen()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+  <a matTooltip="Logout" mat-icon-button href="/logout">
+    <mat-icon>power_settings_new</mat-icon>
+  </a>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

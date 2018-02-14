@@ -1,0 +1,7 @@
+<div class="wrapper" [ngClass]="[thing.values.contact,thing.status]">
+  <h3 class="title">{{ thing.label }}</h3>
+  <mat-icon *ngIf="thing.values['contact'] === 'open'">swap_horiz</mat-icon>
+  <mat-icon *ngIf="thing.values['contact'] === 'closed'">compare_arrows</mat-icon>
+  <div *ngIf="thing.status === 'ONLINE'" class="sub-title mat-caption">{{ thing.values.contact }}</div>
+  <div *ngIf="thing.status === 'OFFLINE'" class="sub-title mat-caption">{{ thing.status }}</div>
+</div>

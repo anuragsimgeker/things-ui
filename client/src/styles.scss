@@ -1,0 +1,72 @@
+// @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+// @import "~@angular/material/prebuilt-themes/purple-green.css";
+
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+// $my-primary: mat-palette($mat-indigo, 700, 300, 900);
+// $my-accent: mat-palette($mat-light-blue);
+// $my-warn: mat-palette($mat-deep-orange, A200);
+$my-primary: mat-palette($mat-grey, 700, 300, 900);
+$my-accent: mat-palette($mat-deep-orange);
+$my-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-dark-theme($my-primary, $my-accent, $my-warn);
+
+// $foreground: map-get($my-theme, foreground);
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+:-webkit-full-screen {
+  background: transparent;
+}
+
+:-moz-full-screen {
+  background: transparent;
+}
+
+:-ms-fullscreen {
+  background: transparent;
+}
+
+:fullscreen {
+  background: transparent;
+}
+
+// // Include theme styles for core and each component used in your app.
+// // Alternatively, you can import and @include the theme mixins for each component
+// // that you are using.
+@include angular-material-theme($theme);
+
+@import 'app/switch/switch.component.theme.scss';
+@include app-switch-theme($theme);
+@import 'app/switch-level/switch-level.component.theme.scss';
+@include app-switch-level-theme($theme);
+@import 'app/contact-sensor/contact-sensor.component.theme.scss';
+@include app-contact-sensor-theme($theme);
+@import 'app/motion-sensor/motion-sensor.component.theme.scss';
+@include app-motion-sensor-theme($theme);
+@import 'app/lock/lock.component.theme.scss';
+@include app-lock-theme($theme);
+@import 'app/welcome/welcome.component.theme.scss';
+@include app-welcome-theme($theme);
+@import 'app/dashboard/dashboard.component.theme.scss';
+@include app-dashboard-theme($theme);
+@import 'app/help/help.component.theme.scss';
+@include app-help-theme($theme);
+@import 'app/alarm-system-status/alarm-system-status.component.theme.scss';
+@include app-alarm-system-status-theme($theme);

@@ -1,0 +1,33 @@
+.sidenav {
+  padding: 20px 10px;
+}
+
+.content {
+  padding: 10px;
+}
+
+button {
+  display: block;
+}
+
+.toolbar {
+  text-align: right;
+
+  .app-name {
+    display: none;
+    font-weight: 300;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  .fill-remaining-space {
+    flex: 1 1 auto; // This fills the remaining space, by using flexbox. Every toolbar row uses a flexbox row layout.
+  }
+
+  .mat-divider {
+    height: 50%;
+    margin: 0 10px;
+  }
+}

@@ -1,0 +1,9 @@
+<div class="wrapper" [ngClass]="[thing.values.lock,thing.status]">
+  <h3 class="title">{{ thing.label }}</h3>
+  <mat-button-toggle [checked]="thing.values.lock === 'locked'" (change)="onToggle(thing.values.lock === 'unlocked')" [disabled]="thing.status === 'OFFLINE'">
+    <mat-icon *ngIf="thing.values['lock'] === 'locked'">lock</mat-icon>
+    <mat-icon *ngIf="thing.values['lock'] === 'unlocked'">lock_open</mat-icon>
+  </mat-button-toggle>
+  <div *ngIf="thing.status === 'ONLINE'" class="sub-title mat-caption">{{ thing.values.lock }}</div>
+  <div *ngIf="thing.status === 'OFFLINE'" class="sub-title mat-caption">{{ thing.status }}</div>
+</div>

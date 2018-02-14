@@ -1,0 +1,12 @@
+ <mat-grid-list [cols]="gridColumns" gutterSize="5" rowHeight="180px">
+  <mat-grid-tile *ngFor="let thing of things" [colspan]="(['alarmSystemStatus'].indexOf(thing.type) !== -1) ? '2' : '1'">
+    <div [ngSwitch]="thing?.type" class="thing">
+      <app-alarm-system-status *ngSwitchCase="'alarmSystemStatus'" [thing]="thing"></app-alarm-system-status>
+      <app-switch *ngSwitchCase="'switch'" [thing]="thing"></app-switch>
+      <app-switch-level *ngSwitchCase="'switchLevel'" [thing]="thing"></app-switch-level>
+      <app-contact-sensor *ngSwitchCase="'contactSensor'" [thing]="thing"></app-contact-sensor>
+      <app-motion-sensor *ngSwitchCase="'motionSensor'" [thing]="thing"></app-motion-sensor>
+      <app-lock *ngSwitchCase="'lock'" [thing]="thing"></app-lock>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

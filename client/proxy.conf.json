@@ -1,0 +1,22 @@
+{
+  "/auth": {
+    "target": "http://73.71.21.253:3000",
+    "secure": false
+  },
+  "/smartthings": {
+    "target": "http://73.71.21.253:3000",
+    "secure": false
+  },
+  "/api": {
+    "target": "http://73.71.21.253:3000",
+    "secure": false
+  },
+  "/logout": {
+    "target": "http://73.71.21.253:3000",
+    "secure": false
+  },
+  "/socket.io": {
+    "target": "http://73.71.21.253:3000",
+    "secure": false
+  }
+}
